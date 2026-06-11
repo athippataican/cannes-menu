@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannes &amp; Co — Thai Standard Buffet Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  /* Cannes Design System v1.0 — Ruby */
+  --ruby-50:#FFF1F3; --ruby-100:#FFE0E5; --ruby-200:#FFB3BF; --ruby-400:#CC3E53;
+  --ruby:#9B1B30; --ruby-700:#6B0D1E; --ruby-900:#420410;
+  --gold:#c9a96e; --gold-dim:#8a7245;
+  --bg:#FAF7F1; --bg2:#F3EEE5; --card:#FFFFFF;
+  --text:#2b2118; --text-dim:#7a6f63; --text-faint:#a89c8e;
+  --line:#e7dfd2;
+  --r-sm:4px; --r-md:8px; --r-lg:12px;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Sarabun','Inter',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+.serif { font-family:'Playfair Display',Georgia,serif; }
+
+/* ── NAV ── */
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filter:blur(16px); background:rgba(66,4,16,.92); border-bottom:1px solid rgba(201,169,110,.25); transition:transform .3s; }
+.nav.hidden { transform:translateY(-100%); }
+.nav-inner { max-width:880px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px; }
+.nav-logo { font-family:'Playfair Display',serif; font-size:14px; letter-spacing:.25em; color:var(--gold); white-space:nowrap; }
+.nav-pills { display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; padding:2px; }
+.nav-pills::-webkit-scrollbar { display:none; }
+.nav-pill { flex-shrink:0; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:500; color:rgba(255,241,243,.75); background:transparent; border:1px solid transparent; cursor:pointer; transition:all .2s; white-space:nowrap; font-family:inherit; }
+.nav-pill.active { color:var(--ruby-900); background:var(--gold); }
+.nav-pill:not(.active):hover { border-color:rgba(201,169,110,.5); }
+
+/* ── HERO ── */
+.hero { min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:linear-gradient(170deg, var(--ruby-900) 0%, var(--ruby-700) 45%, var(--ruby) 100%); position:relative; padding:88px 24px 64px; color:var(--ruby-50); }
+.hero::after { content:''; position:absolute; inset:14px; border:1px solid rgba(201,169,110,.35); border-radius:var(--r-sm); pointer-events:none; }
+.hero-logo { width:170px; height:auto; margin-bottom:20px; opacity:.95; }
+.hero .brand { font-family:'Playfair Display',serif; font-size:30px; letter-spacing:.35em; font-weight:400; color:#fff; }
+.hero .brand-sub { font-size:11px; letter-spacing:.32em; color:var(--gold); margin-top:6px; text-transform:uppercase; }
+.hero .gold-rule { width:48px; height:1px; background:var(--gold); margin:26px auto; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,6vw,52px); font-weight:600; line-height:1.15; letter-spacing:.06em; color:#fff; }
+.hero .tagline { font-size:12px; letter-spacing:.22em; color:var(--ruby-100); margin-top:18px; text-transform:uppercase; line-height:1.8; }
+.hero .meta { font-size:12px; color:var(--ruby-200); margin-top:30px; line-height:2; }
+.hero .scroll-hint { position:absolute; bottom:28px; color:var(--gold); animation:bounce 2s infinite; font-size:18px; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+/* ── SECTIONS ── */
+.section { max-width:880px; margin:0 auto; padding:0 16px; }
+.section-header { padding:64px 0 8px; text-align:center; }
+.section-header .orn { color:var(--ruby); font-size:18px; letter-spacing:.4em; }
+.section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(24px,4vw,32px); font-weight:600; letter-spacing:.08em; color:var(--ruby-700); margin-top:8px; }
+.section-header .th { font-size:14px; color:var(--text-dim); margin-top:6px; }
+.section-header .line { width:40px; height:2px; background:var(--gold); margin:16px auto 0; }
+
+/* ── PRICE TABLE ── */
+.table-wrap { overflow-x:auto; margin:24px 0 8px; border-radius:var(--r-lg); box-shadow:0 2px 14px rgba(66,4,16,.08); background:var(--card); }
+table.price { width:100%; min-width:620px; border-collapse:collapse; font-size:14px; }
+table.price caption { background:var(--ruby); color:#fff; font-family:'Playfair Display',serif; font-size:16px; letter-spacing:.14em; padding:14px; border-radius:var(--r-lg) var(--r-lg) 0 0; }
+table.price th { background:var(--ruby-700); color:var(--ruby-50); font-weight:500; padding:12px 10px; font-size:12.5px; line-height:1.5; }
+table.price th .en { display:block; font-size:10.5px; color:var(--ruby-200); font-weight:400; }
+table.price td { padding:14px 10px; text-align:center; border-bottom:1px solid var(--line); }
+table.price tr:last-child td { border-bottom:none; }
+table.price td.pax { font-weight:600; color:var(--ruby-700); font-size:15px; }
+.price-now { font-size:18px; font-weight:600; color:var(--ruby); }
+.price-old { display:block; font-size:11px; color:var(--text-faint); text-decoration:line-through; }
+.free { color:var(--gold-dim); font-weight:600; }
+
+/* ── ADDON CARDS ── */
+.addons { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:20px 0; }
+.addon { background:var(--card); border-radius:var(--r-lg); overflow:hidden; box-shadow:0 2px 10px rgba(66,4,16,.06); text-align:center; }
+.addon .head { background:var(--ruby); color:#fff; font-size:13px; font-weight:600; padding:9px; }
+.addon .head .en { font-size:10px; font-weight:400; color:var(--ruby-200); display:block; }
+.addon .body { padding:14px 10px; font-size:12.5px; color:var(--text-dim); line-height:1.6; }
+.addon .body b { color:var(--gold-dim); font-size:17px; }
+
+/* ── DETAILS / REMARKS ── */
+.detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0 8px; }
+@media (max-width:680px){ .detail-grid { grid-template-columns:1fr; } }
+.panel { background:var(--card); border-radius:var(--r-lg); padding:22px 24px; box-shadow:0 2px 10px rgba(66,4,16,.06); }
+.panel h3 { font-family:'Playfair Display',serif; font-size:17px; color:var(--ruby-700); margin-bottom:4px; }
+.panel .sub { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:12px; }
+.panel ol { padding-left:20px; }
+.panel li { font-size:13px; line-height:1.8; color:var(--text-dim); margin-bottom:6px; }
+.panel li::marker { color:var(--ruby); font-weight:600; }
+
+/* ── SET CARDS ── */
+.set-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 0; }
+@media (max-width:760px){ .set-grid { grid-template-columns:1fr; } }
+.set-card { background:var(--card); border-radius:var(--r-lg); overflow:hidden; box-shadow:0 3px 16px rgba(66,4,16,.08); display:flex; flex-direction:column; }
+.set-card .set-head { background:linear-gradient(135deg, var(--ruby-700), var(--ruby)); color:#fff; text-align:center; padding:18px 16px 16px; position:relative; }
+.set-card .set-head::after { content:''; position:absolute; left:50%; bottom:-1px; transform:translateX(-50%); width:46px; height:2px; background:var(--gold); }
+.set-card .set-no { font-family:'Playfair Display',serif; font-size:24px; letter-spacing:.18em; }
+.set-card .set-tag { font-size:10px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-top:3px; }
+.set-card ul { list-style:none; padding:10px 22px 22px; flex:1; }
+.set-card li { padding:11px 0; border-bottom:1px dotted var(--line); text-align:center; }
+.set-card li:last-child { border-bottom:none; }
+.set-card .d-th { font-size:14.5px; font-weight:500; color:var(--text); line-height:1.5; }
+.set-card .d-en { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); margin-top:3px; line-height:1.6; }
+
+/* ── CATEGORY LISTS ── */
+.cat-card { background:var(--card); border-radius:var(--r-lg); box-shadow:0 3px 16px rgba(66,4,16,.08); margin:20px 0; overflow:hidden; }
+.cat-head { background:linear-gradient(135deg, var(--ruby-700), var(--ruby)); text-align:center; padding:20px 16px; }
+.cat-head h3 { font-family:'Playfair Display',serif; color:#fff; font-size:21px; letter-spacing:.1em; font-weight:600; }
+.cat-head .th { color:var(--gold); font-size:13px; margin-top:4px; }
+.cat-body { columns:2; column-gap:36px; padding:18px 28px 26px; }
+@media (max-width:680px){ .cat-body { columns:1; } }
+.dish { break-inside:avoid; padding:10px 0; border-bottom:1px dotted var(--line); }
+.dish .d-th { font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
+.dish .d-en { font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); margin-top:2px; line-height:1.6; }
+
+/* ── ORNAMENT ── */
+.flourish { text-align:center; color:var(--ruby); font-size:22px; padding:8px 0 0; letter-spacing:.3em; opacity:.6; }
+
+/* ── FOOTER ── */
+.cta { margin:56px auto 0; max-width:880px; padding:0 16px; }
+.cta-inner { background:linear-gradient(150deg, var(--ruby-900), var(--ruby-700)); border-radius:var(--r-lg); text-align:center; padding:44px 24px; color:var(--ruby-100); position:relative; overflow:hidden; }
+.cta-inner::before { content:''; position:absolute; inset:10px; border:1px solid rgba(201,169,110,.3); border-radius:var(--r-sm); pointer-events:none; }
+.cta-inner .gold-rule { width:42px; height:1px; background:var(--gold); margin:0 auto 18px; }
+.cta-inner h2 { font-family:'Playfair Display',serif; color:#fff; font-size:24px; letter-spacing:.2em; }
+.cta-inner p { font-size:13px; line-height:2; margin-top:12px; }
+.cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:22px; position:relative; z-index:1; }
+.cta-btn { display:inline-block; padding:11px 26px; border-radius:var(--r-md); font-size:13px; font-weight:600; text-decoration:none; transition:all .2s; }
+.cta-btn.gold { background:var(--gold); color:var(--ruby-900); }
+.cta-btn.gold:hover { background:#d9bc85; }
+.cta-btn.ghost { border:1px solid var(--gold); color:var(--gold); }
+.cta-btn.ghost:hover { background:rgba(201,169,110,.12); }
+.footer { text-align:center; padding:48px 16px 60px; max-width:880px; margin:0 auto; }
+.footer .f-logo { font-family:'Playfair Display',serif; font-size:20px; letter-spacing:.3em; color:var(--ruby-700); }
+.footer p { font-size:12px; color:var(--text-dim); margin-top:10px; line-height:1.9; }
+.footer .socials { display:flex; gap:20px; justify-content:center; margin-top:16px; }
+.footer .socials a { font-size:12px; color:var(--text-dim); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:1px; transition:color .2s; }
+.footer .socials a:hover { color:var(--ruby); }
+
+/* ── PRINT (A4) ── */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .nav, .scroll-hint { display: none !important; }
+  .hero { min-height: 0; height: 296mm; page-break-after: always; padding: 60px 24px; }
+  .hero::after { inset: 10mm; }
+  .section-header { padding: 36px 0 8px; }
+  #sets { page-break-before: always; }
+  .set-card, .addon, .panel, .dish { break-inside: avoid; }
+  .set-grid { gap: 14px; }
+  .cat-card { box-shadow: none; border: 1px solid var(--line); }
+  .cat-head { break-after: avoid; }
+  .table-wrap { overflow: visible; box-shadow: none; }
+  table.price { min-width: 0; }
+  .cta { page-break-before: always; margin-top: 24px; }
+  .cta-btn { border: 1px solid var(--gold); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">CANNES &amp; CO</div>
+    <div class="nav-pills">
+      <button class="nav-pill active" onclick="scrollTo_('#pricing')">ราคา</button>
+      <button class="nav-pill" onclick="scrollTo_('#sets')">เมนูเซต</button>
+      <button class="nav-pill" onclick="scrollTo_('#alacarte')">เลือกตามหมวด</button>
+      <button class="nav-pill" onclick="scrollTo_('#desserts')">ของหวาน</button>
+      <button class="nav-pill" onclick="scrollTo_('#contact')">ติดต่อ</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <img class="hero-logo" src="data:image/png;base64,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" alt="Cannes & Co Logo">
+  <div class="brand">CANNES &amp; CO</div>
+  <div class="brand-sub">Cafe · Bakery · Restaurant · Catering</div>
+  <div class="gold-rule"></div>
+  <h1>THAI STANDARD<br>BUFFET MENU</h1>
+  <div class="tagline">A Genuine Taste of Thai Cuisine<br>&amp; Professional Catering Services</div>
+  <div class="meta">บุฟเฟ่ต์ไทยสแตนดาร์ด สำหรับงานเลี้ยงและจัดเลี้ยงนอกสถานที่<br>ซอยมิตรภาพ 19 · ขอนแก่น</div>
+  <div class="scroll-hint">▾</div>
+</header>
+
+<!-- ═══ PRICING ═══ -->
+<section class="section" id="pricing">
+  <div class="section-header">
+    <div class="orn">❧</div>
+    <h2>Standard Thai Buffet — Price List</h2>
+    <div class="th">บุฟเฟ่ต์ไทยสแตนดาร์ด อาหารไทยแบบมาตรฐาน อาหารอร่อย · ราคาต่อท่าน</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="price">
+      <caption>STANDARD THAI BUFFET</caption>
+      <thead>
+        <tr>
+          <th>จำนวนแขก<span class="en">No. of pax</span></th>
+          <th>5 รายการ<span class="en">5 Menus</span></th>
+          <th>6 รายการ<span class="en">6 Menus</span></th>
+          <th>7 รายการ<span class="en">7 Menus</span></th>
+          <th>ข้าวหอมมะลิ<span class="en">Steamed Rice</span></th>
+          <th>ของหวาน/ผลไม้รวม<span class="en">Dessert</span></th>
+          <th>น้ำดื่ม<span class="en">Drinking Water</span></th>
+          <th>จำนวนรายการ<span class="en">No. of Items</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="pax">100 ท่าน</td><td><span class="price-old">350</span><span class="price-now">295</span></td><td><span class="price-old">380</span><span class="price-now">335</span></td><td><span class="price-old">430</span><span class="price-now">375</span></td><td>1</td><td>1</td><td class="free">ฟรี</td><td>8–10</td></tr>
+        <tr><td class="pax">70 ท่าน</td><td><span class="price-old">360</span><span class="price-now">310</span></td><td><span class="price-old">400</span><span class="price-now">345</span></td><td><span class="price-old">440</span><span class="price-now">380</span></td><td>1</td><td>1</td><td class="free">ฟรี</td><td>8–10</td></tr>
+        <tr><td class="pax">50 ท่าน</td><td><span class="price-old">370</span><span class="price-now">320</span></td><td><span class="price-old">420</span><span class="price-now">360</span></td><td><span class="price-old">460</span><span class="price-now">400</span></td><td>1</td><td>1</td><td class="free">ฟรี</td><td>8–10</td></tr>
+        <tr><td class="pax">30 ท่าน</td><td><span class="price-old">540</span><span class="price-now">470</span></td><td><span class="price-old">600</span><span class="price-now">520</span></td><td><span class="price-old">660</span><span class="price-now">570</span></td><td>1</td><td>1</td><td class="free">ฟรี</td><td>8–10</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="addons">
+    <div class="addon"><div class="head">เพิ่มของคาว<span class="en">Add Buffet</span></div><div class="body">รายการละ<br><b>50–80</b></div></div>
+    <div class="addon"><div class="head">เพิ่มของหวาน<span class="en">Add Dessert</span></div><div class="body">รายการละ<br><b>35–65</b></div></div>
+    <div class="addon"><div class="head">เพิ่มเครื่องดื่ม<span class="en">Add Drink</span></div><div class="body">น้ำอัดลม หรือน้ำสมุนไพร 2 รายการ<br><b>45</b> / เดินเสิร์ฟ <b>65</b></div></div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="panel">
+      <h3>รายละเอียด</h3>
+      <div class="sub">Provided by Cannes &amp; Co</div>
+      <ol>
+        <li>ทางร้านจัดเตรียมอุปกรณ์ภาชนะกระเบื้อง ช้อน ส้อม แก้วน้ำ และกระดาษเช็ดปาก</li>
+        <li>โต๊ะบุฟเฟ่ต์ปูผ้าสเกิร์ตสวยงาม พร้อมแจกันดอกไม้ตกแต่ง และภาชนะสำหรับอุ่นอาหาร</li>
+        <li>รายการอาหาร รวมข้าวสวยและน้ำดื่มเย็นทุกรายการ</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h3>หมายเหตุ</h3>
+      <div class="sub">Remarks</div>
+      <ol>
+        <li>จำนวนรายการอาหารที่ได้ เป็นไปตามที่ระบุไว้ในใบเสนอราคา</li>
+        <li>รายการอาหารแต่ละเซต สามารถสลับสับเปลี่ยนกันได้ โดยให้ราคาต้นทุนอาหารในเมนูที่เปลี่ยนนั้นใกล้เคียงกัน (สามารถเลือกอาหารประเภททะเลได้ 1 รายการ, ปลา 1 รายการ และผักผัด 1 รายการ)</li>
+        <li>ราคานี้เฉพาะในเขตขอนแก่นและพื้นที่ใกล้เคียง ต่างจังหวัดสามารถสอบถามราคาได้ที่เจ้าหน้าที่</li>
+        <li>กรณีต้องการน้ำอัดลม หรือน้ำสมุนไพร 2 รายการ สามารถซื้อเพิ่มได้ 45–65.- / ท่าน</li>
+        <li>ค่าบริการจัดเลี้ยงนอกสถานที่ 10% คิดจากยอดรวมค่าอาหารและเครื่องดื่ม (ขั้นต่ำ 2,000.-)</li>
+        <li>ค่าพาหนะคิดตามระยะทาง</li>
+        <li>ระยะเวลาให้บริการ 4 ชั่วโมง เริ่มนับจากเวลาโต๊ะพร้อม</li>
+        <li>ราคานี้ยังไม่รวมภาษีมูลค่าเพิ่ม 7%</li>
+        <li>ราคานี้ไม่รวมโต๊ะเก้าอี้สำหรับแขกรับประทานอาหาร (สามารถเช่าเพิ่มได้)</li>
+        <li>ในกรณีต้องการจองงาน กรุณาชำระค่ามัดจำ 50% ของยอดเงินทั้งหมด และยอดที่เหลือชำระภายในวันงาน</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- ═══ SET MENUS ═══ -->
+<section class="section" id="sets">
+  <div class="section-header">
+    <div class="orn">❧</div>
+    <h2>Recommended Set Menus</h2>
+    <div class="th">รายการอาหารบุฟเฟ่ต์สแตนดาร์ด — เซตแนะนำ 8 เซต</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="set-grid">
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 1</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">แกงมัสมั่นไก่ หรือหมูแบบโบราณ</div><div class="d-en">Masaman Curry with Pork or Chicken</div></li>
+        <li><div class="d-th">แกงจืดลูกชิ้นปลา สาหร่าย เห็ดหูหนูขาว หมูบะช่อ</div><div class="d-en">Clear Soup with Fish Balls, Seaweed, White Jelly Mushrooms and Minced Pork</div></li>
+        <li><div class="d-th">ทอดมันปลากราย</div><div class="d-en">Deep Fried Fish Cake</div></li>
+        <li><div class="d-th">น้ำพริกมะม่วง ผักสด</div><div class="d-en">Shrimp Paste with Green Mango Dip Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ผัดผักสี่สหาย</div><div class="d-en">Stir-Fried Four Kinds Vegetables in Oyster Sauce</div></li>
+        <li><div class="d-th">ฟิเล่ปลาทอดราดซอสสามรส</div><div class="d-en">Deep Fried Filet Fish Garnished in Tamarind Flavored Sauce</div></li>
+        <li><div class="d-th">สเต็กหมูมะนาว คะน้าสด</div><div class="d-en">Grilled Pork Filet Steak Served with Fresh Kale &amp; Spicy Lemon Dressing</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือทับทิมกรอบ</div><div class="d-en">Mixed Seasonal Fruits or Water Chestnut Dumplings in Coconut Milk</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 2</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">แกงเขียวหวานหมู ยอดมะพร้าวอ่อน</div><div class="d-en">Green Curry with Pork &amp; Coconut Shoots</div></li>
+        <li><div class="d-th">น่องปีกไก่ตุ๋นยาจีน เห็ดหอม</div><div class="d-en">Herbal Chinese Soup with Chicken Drumsticks</div></li>
+        <li><div class="d-th">น้ำพริกลงเรือทรงเครื่อง ผักสด</div><div class="d-en">Shrimp Paste Dip with Pork "Picnic Style" Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ผัดผักรวมมิตร</div><div class="d-en">Stir-Fried Mixed Vegetables in Oyster Sauce</div></li>
+        <li><div class="d-th">ไก่อบซอส ยอดผัก</div><div class="d-en">Steamed Chicken and Vegetables with Red Gravy Sauce</div></li>
+        <li><div class="d-th">หมูทอดใบมะกรูดกรอบ</div><div class="d-en">Pork Belly Slice with Citrus Leaves</div></li>
+        <li><div class="d-th">ปลานึ่งมะนาว</div><div class="d-en">Steamed Fish with Lemon</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ ขนมจีน</div><div class="d-en">Steamed Jasmine Rice &amp; "Kanom Jeen" Noodles</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือลอดช่อง แตงไทหรือเผือก น้ำกะทิ</div><div class="d-en">Mixed Seasonal Fruits or "Lod Chong" Thai, Melon or Taro in Coconut Milk</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 3</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">แกงกะหรี่ไก่ อาจาด</div><div class="d-en">Yellow Curry with Chicken Served with Cucumber Salad</div></li>
+        <li><div class="d-th">ต้มยำขาหมู</div><div class="d-en">"Tom Yum" Spicy Soup with Pork's Legs</div></li>
+        <li><div class="d-th">น้ำพริกปูไข่เค็ม ผักสด</div><div class="d-en">Shrimp Paste Dip with Crab's Meat &amp; Salted Egg Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ผัดพริกขิงถั่วฝักยาวหมู</div><div class="d-en">Stir-Fried String Beans in Red Curry Paste with Pork</div></li>
+        <li><div class="d-th">เต้าหู้ทรงเครื่อง</div><div class="d-en">Stir-Fried Tofu, Shiitake Mushrooms &amp; Vegetables Chinese Style</div></li>
+        <li><div class="d-th">ไก่ทอดใบเตย</div><div class="d-en">Deep Fried Chicken with Pandan Leaves</div></li>
+        <li><div class="d-th">ฟิเล่ปลาทอดผัดพริกไทยดำ</div><div class="d-en">Deep Fried Filet Fish with Black Pepper &amp; Garlic Sauce</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือบัวลอยเผือกมะพร้าวอ่อน</div><div class="d-en">Mixed Seasonal Fruits or Taro Ball in Coconut Milk</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 4</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">ขนมจีนน้ำยาปลาช่อนชาววัง</div><div class="d-en">Fish in Num Ya Red Curry with Ginger Flavor Served with Steamed Thai Noodles and Vegetables</div></li>
+        <li><div class="d-th">ไก่ตุ๋นฟักมะนาวดอง</div><div class="d-en">Chicken Clear Soup with Winter Lemon and Shiitake Mushrooms</div></li>
+        <li><div class="d-th">หลนเต้าเจี้ยว ผักสด</div><div class="d-en">Soy Beans Cooked in Coconut Milk Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ผัดคะน้าน้ำมันหอยใส่หมู</div><div class="d-en">Stir-Fried Chinese Kale with Pork &amp; Oyster Sauce</div></li>
+        <li><div class="d-th">ยำรวมมิตรบก</div><div class="d-en">Spicy Salad with Pork, Chicken &amp; Sausages</div></li>
+        <li><div class="d-th">ผัดเผ็ดปลาดุกทอด กะเพรากรอบ</div><div class="d-en">Deep Fried Catfish with Red Curry Paste with Crispy Basil Leaves</div></li>
+        <li><div class="d-th">หมูสับปั้นก้อนทอดกระเทียมพริกไทย</div><div class="d-en">Deep Fried Minced Pork with Garlic &amp; Pepper Paste</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือสาคูใบเตย มะพร้าวอ่อน</div><div class="d-en">Mixed Fruits or Thai Pandan Sago and Young Coconut in Coconut Milk</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 5</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">พะแนงน่องไก่</div><div class="d-en">"Panaeng" Mild Red Curry with Chicken Drumsticks</div></li>
+        <li><div class="d-th">ต้มโคล้งปลาช่อนทอด</div><div class="d-en">Sour and Spicy Soup with Fried Snake-Head Fish</div></li>
+        <li><div class="d-th">น้ำพริกกุ้งสด ผักสด</div><div class="d-en">Shrimp Paste Dips with Shrimps Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ลูกชิ้นกุ้งผัดบร็อคโคลี่</div><div class="d-en">Stir-Fried Shrimp Balls with Broccoli in Oyster Sauce</div></li>
+        <li><div class="d-th">ห่อหมกปลาใบยอ พริกแกงใต้</div><div class="d-en">Steamed Red Curry in Coconut Milk Custard with River Black Salmon Fish</div></li>
+        <li><div class="d-th">ซี่โครงหมูอ่อนอบซอสแดง ยอดผัก</div><div class="d-en">Roasted Pork Ribs and Vegetables with Gravy Sauce</div></li>
+        <li><div class="d-th">ไก่ผัดเผ็ดมะม่วงหิมพานต์</div><div class="d-en">Stir-Fried Chicken with Cashew Nut</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือเต้าทึงรวมมิตรน้ำลำไย</div><div class="d-en">Mixed Fruits or Iced Assorted Bean in Syrup</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 6</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">แกงเผ็ดไก่ใส่ฟักเขียว หรือแกงสายบัวปลาทูสด</div><div class="d-en">Red Curry with Chicken and Wax Gourd / or Lotus Stem &amp; Fresh Mackerel in Coconut Sour Soup</div></li>
+        <li><div class="d-th">ซี่โครงหมูอ่อนตุ๋นยาจีน เห็ดหอม</div><div class="d-en">Chinese Herbal Soup with Pork Ribs &amp; Shiitake Mushroom</div></li>
+        <li><div class="d-th">หลนปูเค็ม ผักสด</div><div class="d-en">Salted Crab Cooked in Coconut Milk Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ถั่วลันเตาผัดเห็ดฟางน้ำมันหอย</div><div class="d-en">Stir-Fried Peas and Straw Mushrooms in Oyster Sauce</div></li>
+        <li><div class="d-th">น้ำตกหมูย่าง</div><div class="d-en">Grilled Pork Spicy Salad</div></li>
+        <li><div class="d-th">น่องปีกไก่ทอดกระเทียม</div><div class="d-en">Deep Fried Chicken Wing Sticks with Coriander's Root, Garlic and Peppers Paste</div></li>
+        <li><div class="d-th">ฟิเล่ปลาทอดราดซอสเปรี้ยวหวาน</div><div class="d-en">Fried Filet Fish with Sweet &amp; Sour Sauce</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือขนมรวมมิตร น้ำกะทิ</div><div class="d-en">Mixed Fruits or Mixed Sweet in Coconut Milk Syrup</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 7</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">แกงเขียวหวานลูกชิ้นปลากราย มะเขือเปราะ</div><div class="d-en">Green Curry with Fishball &amp; Egg Plants</div></li>
+        <li><div class="d-th">ต้มยำไก่ ใบมะขามอ่อน</div><div class="d-en">"Tom Yum" Spicy Clear Soup with Chicken &amp; Young Tamarind Leaf</div></li>
+        <li><div class="d-th">น้ำพริกมะขามผัด ผักสด</div><div class="d-en">Tamarind Paste Dip with Minced Pork Served with Fresh Vegetables</div></li>
+        <li><div class="d-th">ลูกชิ้นกุ้งผัดผักโสภณ หรือบร็อคโคลี่</div><div class="d-en">Stir-Fried Shrimp Balls with Chinese Bitter Kale / Broccoli in Oyster Sauce</div></li>
+        <li><div class="d-th">ลาบหมู หรือไก่</div><div class="d-en">"Lab" Northeastern Style Spicy Salad of Minced Pork or Chicken</div></li>
+        <li><div class="d-th">น่องปีกไก่น้ำแดง หรือไข่ลูกเขยทรงเครื่อง</div><div class="d-en">Steamed Chicken Wingstick with Gravy Chinese Style / or Boiled Egg Fried with Tamarind Sauce</div></li>
+        <li><div class="d-th">ปลานึ่งซีอิ๊ว</div><div class="d-en">Steamed Fish with Soy Sauce</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ ขนมจีน</div><div class="d-en">Steamed Jasmine Rice &amp; "Kanom Jeen" Noodles</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือกล้วยบวชชี</div><div class="d-en">Mixed Fruits or Bananas in Coconut Milk</div></li>
+      </ul>
+    </div>
+
+    <div class="set-card">
+      <div class="set-head"><div class="set-no">SET 8</div><div class="set-tag">Recommended</div></div>
+      <ul>
+        <li><div class="d-th">ฉู่ฉี่ปลาทูสด หรือแกงเผ็ดปลาดุก หรือไข่พะโล้</div><div class="d-en">Mackerel in Red Curry without Spices / Catfish in Red Curry or Hard Boiled Egg in Chinese Herbs Sweet Sauce</div></li>
+        <li><div class="d-th">แกงจืดเต้าหู้ไข่ ผักกาดขาว สาหร่าย หมูบะช่อ</div><div class="d-en">Clear Soup with Tofu, Minced Pork, Seaweed &amp; Cabbages</div></li>
+        <li><div class="d-th">ลาบสารพัดเห็ด</div><div class="d-en">"Lab" Northeastern Style Spicy Salad of Varieties Mushrooms</div></li>
+        <li><div class="d-th">ผักไต้หวันผัดเห็ดฟาง น้ำมันหอย</div><div class="d-en">Stir-Fried Taiwanese Vegetables and Straw Mushroom in Oyster Sauce</div></li>
+        <li><div class="d-th">ผัดพริกเหลืองลูกชิ้นปลากราย ยอดมะพร้าวอ่อน ผักรวม</div><div class="d-en">Fish Balls, Coconut Shoots and Mixed Vegetables Stir-Fry in Turmeric and Yellow Chili Southern Style</div></li>
+        <li><div class="d-th">ไก่ชิ้น หรือน่องไก่ทอดกระเทียมพริกไทย</div><div class="d-en">Deep Fried Chicken Filet or Drumstick with Garlic &amp; Pepper Paste</div></li>
+        <li><div class="d-th">ปลานึ่งมะนาว</div><div class="d-en">Steamed Fish with Lemon</div></li>
+        <li><div class="d-th">ข้าวหอมมะลิ</div><div class="d-en">Steamed Jasmine Rice</div></li>
+        <li><div class="d-th">ผลไม้รวม หรือวุ้นกะทิมะพร้าวอ่อน</div><div class="d-en">Mixed Seasonal Fruits or Coconut Jelly</div></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="flourish">❦</div>
+  <p style="text-align:center;font-size:11.5px;color:var(--text-faint);line-height:1.9;padding:8px 16px 0;">
+    ** จำนวนรายการอาหารที่ได้ เป็นไปตามที่ระบุไว้ในตารางราคา<br>
+    ** รายการอาหารแต่ละเซต สามารถสลับสับเปลี่ยนกันได้ โดยให้ราคาต้นทุนอาหารในเมนูที่เปลี่ยนนั้นใกล้เคียงกัน
+  </p>
+</section>
+<!-- ═══ À LA CARTE CATEGORIES ═══ -->
+<section class="section" id="alacarte">
+  <div class="section-header">
+    <div class="orn">❧</div>
+    <h2>Menu by Category</h2>
+    <div class="th">เลือกรายการอาหารตามหมวด — สำหรับสลับเปลี่ยนในเซต หรือสั่งเพิ่ม</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="cat-card" id="drinks">
+    <div class="cat-head"><h3>DRINKS</h3><div class="th">ประเภทเครื่องดื่ม</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">น้ำอัดลม</div><div class="d-en">Soft Drinks</div></div>
+      <div class="dish"><div class="d-th">น้ำพั้นช์</div><div class="d-en">Punch Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำอัญชันมะนาว</div><div class="d-en">Lemon Butterfly Pea Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำส้มแพชชั่น</div><div class="d-en">Passion Fruit Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำมะตูม</div><div class="d-en">Bael Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำกระเจี๊ยบ</div><div class="d-en">Roselle Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำลำไย</div><div class="d-en">Longan Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำตะไคร้</div><div class="d-en">Lemon Grass Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำใบเตย</div><div class="d-en">Pandan Leaf Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำเก๊กฮวย</div><div class="d-en">Chrysanthemum Tea Juice</div></div>
+      <div class="dish"><div class="d-th">น้ำชาดำเย็น</div><div class="d-en">Black Ice Tea</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>CURRY</h3><div class="th">ประเภทแกงเผ็ด / แกงกะทิ</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">แกงมัสมั่นหมู / ไก่</div><div class="d-en">Massaman Curry with Pork / Chicken</div></div>
+      <div class="dish"><div class="d-th">แกงเขียวหวานลูกชิ้นปลากราย มะเขือเปราะ</div><div class="d-en">Green Curry with Fishball &amp; Egg Plants</div></div>
+      <div class="dish"><div class="d-th">แกงเขียวหวานหมู / ไก่ ยอดมะพร้าว</div><div class="d-en">Green Curry with Pork &amp; Coconut Shoots</div></div>
+      <div class="dish"><div class="d-th">ขนมจีนน้ำยาชาววัง</div><div class="d-en">Fish in Numya Red Curry Wild Ginger Flavor Served with Steamed Thai Noodles and Vegetables</div></div>
+      <div class="dish"><div class="d-th">แกงป่าหมู / ไก่</div><div class="d-en">Red Curry with Pork / Chicken</div></div>
+      <div class="dish"><div class="d-th">แกงป่าปลาดุก</div><div class="d-en">Red Curry with Catfish</div></div>
+      <div class="dish"><div class="d-th">แกงเผ็ดปลาดุก มะระ</div><div class="d-en">Red Curry with Catfish and Bitter Squash</div></div>
+      <div class="dish"><div class="d-th">แกงไตปลา</div><div class="d-en">"Kaeng Tai Pla" Fish in Hot and Spicy Southern Yellow Curry</div></div>
+      <div class="dish"><div class="d-th">แกงสายบัวปลาทูสด</div><div class="d-en">Lotus Stems and Fresh Mackerel in Coconut Sour Soup</div></div>
+      <div class="dish"><div class="d-th">แกงอ่อมปลาดุกใบชะพลู</div><div class="d-en">Catfish and Wild Betel Leave in Northern Style Soup</div></div>
+      <div class="dish"><div class="d-th">แกงกะหรี่หมู / ไก่ / น่องไก่ อาจาด</div><div class="d-en">Pork / Chicken / Chicken Drums Yellow Curry with Cucumber Salad</div></div>
+      <div class="dish"><div class="d-th">แกงเขียวหวานหมู / ไก่ มะเขือเปราะ</div><div class="d-en">Green Curry with Pork / Chicken &amp; Egg Plants</div></div>
+      <div class="dish"><div class="d-th">พะแนงหมู / น่องไก่</div><div class="d-en">Panang Curry with Pork / Chicken Drums</div></div>
+      <div class="dish"><div class="d-th">ขนมจีนน้ำยาป่า</div><div class="d-en">Fish in Clear Spicy Wild Ginger Flavor Served with Steamed Thai Noodles and Vegetables</div></div>
+      <div class="dish"><div class="d-th">แกงป่าลูกชิ้นปลากราย</div><div class="d-en">Red Curry with Fishball</div></div>
+      <div class="dish"><div class="d-th">แกงเผ็ดไก่ใส่ฟัก หรือหน่อไม้</div><div class="d-en">Red Curry with Chicken &amp; Wax Gourd or Bamboo Shoot</div></div>
+      <div class="dish"><div class="d-th">ฉู่ฉี่ปลาทูสด</div><div class="d-en">Mackerel in Red Curry without Spices</div></div>
+      <div class="dish"><div class="d-th">แกงเหลืองฟัก ปลาน้ำดอกไม้</div><div class="d-en">Fish and Wax Gourd and Barracuda Fish in Hot and Spicy Southern Yellow Curry</div></div>
+      <div class="dish"><div class="d-th">แกงคั่วหอยขม / หอยแครง / หอยแมลงภู่</div><div class="d-en">Periwinkle / Cockle or Mussel in Mild Red Curry</div></div>
+      <div class="dish"><div class="d-th">ปลาร้าทรงเครื่อง</div><div class="d-en">Fermented Fish Cooked in Coconut Soup</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>SOUP</h3><div class="th">ประเภทแกงจืด / แกงส้ม / ต้มยำ</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">แกงจืดเต้าหู้ หมูบะช่อ สาหร่าย เห็ดหูหนูขาว</div><div class="d-en">Clear Soup with Tofu, Seaweeds, Minced Pork and White Jelly Mushroom</div></div>
+      <div class="dish"><div class="d-th">แกงจืดลูกชิ้นปลา สาหร่าย หมูบะช่อ เห็ดหูหนูขาว</div><div class="d-en">Clear Soup with Fish Balls, Seaweed, Minced Pork and White Jelly Mushroom</div></div>
+      <div class="dish"><div class="d-th">แกงจืดแตงกวายัดไส้</div><div class="d-en">Clear Soup with Stuffed Cucumber in Minced Pork</div></div>
+      <div class="dish"><div class="d-th">แกงจืดฟองเต้าหู้ หมูบะช่อ</div><div class="d-en">Clear Soup with Tofu Skin and Minced Pork</div></div>
+      <div class="dish"><div class="d-th">น่องปีกไก่ตุ๋นยาจีน เห็ดหอม</div><div class="d-en">Herbal Chinese Clear Soup with Drumsticks and Shiitake Mushrooms</div></div>
+      <div class="dish"><div class="d-th">ซี่โครงหมูอ่อนตุ๋นยาจีน เห็ดหอม</div><div class="d-en">Herbal Chinese Clear Soup with Pork Ribs and Shiitake Mushrooms</div></div>
+      <div class="dish"><div class="d-th">ไก่ตุ๋นฟักมะนาวดอง เห็ดหอม</div><div class="d-en">Chicken Clear Soup with Winter Lemon and Shiitake Mushroom</div></div>
+      <div class="dish"><div class="d-th">ไข่พะโล้ หมูสามชั้นหรือน่องไก่</div><div class="d-en">Hard Boiled Eggs in Chinese Herbs Sweet Sauce with Pork Belly or Chicken Drumsticks</div></div>
+      <div class="dish"><div class="d-th">ต้มยำขาหมู</div><div class="d-en">"Tom Yum" Spicy Soup with Pork Leg</div></div>
+      <div class="dish"><div class="d-th">ซุปแขกหมูตุ๋น / ไก่ตุ๋น</div><div class="d-en">Indian Style Sour Clear Soup with Pork or Chicken</div></div>
+      <div class="dish"><div class="d-th">ต้มยำไก่ ใบมะขามอ่อน</div><div class="d-en">"Tom Yum" Spicy Clear Soup with Chicken and Young Tamarind Leaf</div></div>
+      <div class="dish"><div class="d-th">ต้มยำปลาช่อน น้ำใส</div><div class="d-en">"Tom Yum" Spicy Soup with River Black Salmon</div></div>
+      <div class="dish"><div class="d-th">ต้มแซ่บไก่</div><div class="d-en">Hot and Spicy Soup with Chicken and Mushrooms</div></div>
+      <div class="dish"><div class="d-th">ต้มโคล้งปลาช่อนทอด</div><div class="d-en">Sour and Spicy Soup with Fried River Black Salmon</div></div>
+      <div class="dish"><div class="d-th">ต้มโคล้งไก่</div><div class="d-en">Sour and Spicy Soup with Chicken</div></div>
+      <div class="dish"><div class="d-th">แกงส้มพริกสดปลาช่อนทอด ผักรวม</div><div class="d-en">Thai Hot and Sour Soup with Vegetables and Fried River Black Salmon Fish</div></div>
+      <div class="dish"><div class="d-th">แกงส้มพริกสดกุ้งสด ผักรวม</div><div class="d-en">Thai Hot and Sour Soup with Vegetables and Shrimps</div></div>
+      <div class="dish"><div class="d-th">เกาเหลาลูกชิ้นหมู หมูตุ๋น</div><div class="d-en">Clear Soup with Stewed Pork, Pork Balls and Beansprouts</div></div>
+      <div class="dish"><div class="d-th">เกาเหลาลูกชิ้นปลา ทรงเครื่อง</div><div class="d-en">Clear Soup with Fish Balls and Beansprouts</div></div>
+      <div class="dish"><div class="d-th">เกาเหลาไก่ฉีก มะระ</div><div class="d-en">Clear Soup with Shredded Chicken and Beansprouts</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>DIPPING SAUCE</h3><div class="th">ประเภทน้ำพริก</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">น้ำพริกลงเรือทรงเครื่อง ผักสด</div><div class="d-en">Shrimps Paste Dip "Picnic Style" Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">น้ำพริกกุ้งสด ผักสด</div><div class="d-en">Shrimps Dip Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">น้ำพริกมะม่วง ผักสด</div><div class="d-en">Shrimps Paste with Green Mango Dip Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">น้ำพริกมะขามผัด ผักสด</div><div class="d-en">Stir Fry Tamarind Dip Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">น้ำพริกปูไข่เค็ม ผักสด</div><div class="d-en">Shrimps Paste Dips with Crab, Salted Egg Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">น้ำพริกกะปิ ผักสด</div><div class="d-en">Shrimps Paste Chili Dip with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">หลนเต้าเจี้ยว ผักสด</div><div class="d-en">Soy Beans Cooked in Coconut Milk Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">หลนปูเค็ม ผักสด</div><div class="d-en">Salted Crab Cooked in Coconut Milk Served with Fresh Vegetables</div></div>
+      <div class="dish"><div class="d-th">หลนปลาอินทรีย์เค็ม ผักสด</div><div class="d-en">Salted Fish Cooked in Coconut Milk Served with Fresh Vegetables</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>SALAD</h3><div class="th">ประเภทยำ</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">สเต็กหมู / ไก่มะนาว คะน้าสด</div><div class="d-en">Pork / Chicken Filet Steak with Chili-Lemon and Garlic Dressing Served with Raw Chinese Kale</div></div>
+      <div class="dish"><div class="d-th">ยำรวมมิตรบก</div><div class="d-en">Mixed Pork or Chicken and Sausages Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำวุ้นเส้นหมูสับ</div><div class="d-en">Glass Noodles and Minced Pork Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำไก่ย่าง / หมูย่าง</div><div class="d-en">Grilled Chicken or Pork Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำแหนมสด</div><div class="d-en">Sour Pork Sausage Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำหมูยอ</div><div class="d-en">Northeastern Pork Sausage Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำเชี่ยงไฮ้</div><div class="d-en">Shanghai Noodles Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำกุนเชียง</div><div class="d-en">Chinese Pork Sausage Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำเล็บมือนาง</div><div class="d-en">Chicken Paws Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ยำสารพัดเห็ด</div><div class="d-en">Mixed Mushrooms Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ลาบหมู / ไก่</div><div class="d-en">"Laab" Northeastern Style Spicy Salad of Minced Pork or Chicken</div></div>
+      <div class="dish"><div class="d-th">ลาบสารพัดเห็ด</div><div class="d-en">"Laab" Northeastern Style Spicy Salad of Varieties of Mushrooms</div></div>
+      <div class="dish"><div class="d-th">น้ำตกหมู / ไก่</div><div class="d-en">Grilled Pork / Chicken Northeastern Spicy Salad</div></div>
+      <div class="dish"><div class="d-th">ส้มตำไทย ปู</div><div class="d-en">Papaya Salad Thai Style with Salted Crab</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>STIR FRIED</h3><div class="th">ประเภทผัดผัก / ผัดเผ็ด</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">ลูกชิ้นกุ้งผัดบร็อคโคลี่</div><div class="d-en">Stir-Fried Shrimp Balls with Broccoli in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ลูกชิ้นกุ้งผัดผักโสภณ</div><div class="d-en">Stir-Fried Shrimp Balls and Chinese Bitter Kale in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดผักรวมมิตร</div><div class="d-en">Stir-Fried Mixed Vegetables in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดผักสี่สหาย</div><div class="d-en">Stir-Fried Four Kinds Vegetables in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ถั่วลันเตาผัดเห็ดฟาง น้ำมันหอย</div><div class="d-en">Stir-Fried Snow Peas and Straw Mushrooms in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดคะน้าน้ำมันหอย หมูกรอบ</div><div class="d-en">Stir-Fried Chinese Kale with Crispy Pork in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดคะน้าปลาเค็มน้ำมันหอย</div><div class="d-en">Stir-Fried Chinese Kale with Salted Fish in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">แขนงผัดน้ำมันหอย หมูกรอบ</div><div class="d-en">Stir-Fried Cabbage Sprouts and Crispy Pork in Oyster Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดถั่วแขกหมูสับ</div><div class="d-en">Stir-Fried String Beans with Minced Pork</div></div>
+      <div class="dish"><div class="d-th">ผัดวุ้นเส้นทรงเครื่อง</div><div class="d-en">Stir-Fried Glass Noodles with Vegetables, Egg and Chicken</div></div>
+      <div class="dish"><div class="d-th">ผัดบวบหมู ใส่ไข่</div><div class="d-en">Stir-Fried Zucchini with Pork and Eggs</div></div>
+      <div class="dish"><div class="d-th">ผัดเปรี้ยวหวานหมู / ไก่</div><div class="d-en">Stir-Fried Pork or Chicken with Sweet and Sour Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดถั่วงอก ใส่เต้าหู้</div><div class="d-en">Stir-Fried Bean Sprouts and Tofu</div></div>
+      <div class="dish"><div class="d-th">ผัดผักกาดดอง ใส่ไข่ กระเทียมดอง</div><div class="d-en">Stir-Fried Pickled Cabbage with Garlic and Eggs</div></div>
+      <div class="dish"><div class="d-th">ผัดเต้าหู้ขาว ราดหน้าหมูสับ</div><div class="d-en">Stir-Fried Tofu with Minced Pork Gravy</div></div>
+      <div class="dish"><div class="d-th">ไก่ผัดเม็ดมะม่วงหิมพานต์</div><div class="d-en">Stir-Fried Chicken with Cashew Nuts</div></div>
+      <div class="dish"><div class="d-th">ผัดกะเพราหมูสับ / ไก่สับ</div><div class="d-en">Stir-Fried Basil with Minced Pork or Chicken</div></div>
+      <div class="dish"><div class="d-th">ผัดเผ็ดหมูมะเขือเปราะ</div><div class="d-en">Stir-Fried Pork and Eggplant in Red Curry Paste</div></div>
+      <div class="dish"><div class="d-th">ผัดเผ็ดปลาดุกทอด กะเพรากรอบ</div><div class="d-en">Deep Fried Catfish with Red Curry Paste Garnished with Crispy Basil Leaves</div></div>
+      <div class="dish"><div class="d-th">ผัดเผ็ดลูกชิ้นปลากราย</div><div class="d-en">Stir-Fried Fish Balls with Chili Paste</div></div>
+      <div class="dish"><div class="d-th">ผัดเผ็ดหมูป่าพริกไทยอ่อน</div><div class="d-en">Stir-Fried Pork with Chili Paste and Green Pepper</div></div>
+      <div class="dish"><div class="d-th">ผัดเผ็ดปลาดุกสด</div><div class="d-en">Stir-Fried Catfish and Eggplants with Chili Paste</div></div>
+      <div class="dish"><div class="d-th">ผัดขี้เมาไก่ ยอดมะพร้าว</div><div class="d-en">Stir-Fried Spicy Chicken with Basil Leaves</div></div>
+      <div class="dish"><div class="d-th">ผัดพริกขิงถั่วฝักยาวหมู / ไก่</div><div class="d-en">Stir-Fried String Beans in Red Curry Paste with Pork or Chicken</div></div>
+      <div class="dish"><div class="d-th">ผัดพริกเหลืองหมู / ไก่</div><div class="d-en">Stir-Fried Pork or Chicken in Turmeric and Yellow Chilies Southern Style</div></div>
+      <div class="dish"><div class="d-th">ผัดพริกเหลืองลูกชิ้นปลากราย ยอดมะพร้าวอ่อน</div><div class="d-en">Stir-Fried Fish Balls and Coconut Shoots in Turmeric and Yellow Chilies Southern Style</div></div>
+      <div class="dish"><div class="d-th">ผัดหน่อไม้ลูกชิ้นปลา โหระพา</div><div class="d-en">Stir-Fried Fish Balls and Bamboo Shoot with Chili Yellow Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดฉ่าปลาดุกทอด</div><div class="d-en">Stir-Fried Deep Fried Catfish with Garlic and Chili Hot Sauce</div></div>
+      <div class="dish"><div class="d-th">ผัดฉ่าลูกชิ้นปลากราย</div><div class="d-en">Stir-Fried Fish Balls with Garlic and Chili Hot Sauce</div></div>
+      <div class="dish"><div class="d-th">ไก่ผัดพริกขิงสด เห็ดหูหนู</div><div class="d-en">Stir-Fried Chicken with Ginger and Jew's Ear Mushroom</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-head"><h3>DEEP FRIED / STEAMED</h3><div class="th">ประเภททอดและอบ</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">ทอดมันปลากราย</div><div class="d-en">Deep Fried Fish Cake</div></div>
+      <div class="dish"><div class="d-th">ทอดมันข้าวโพด</div><div class="d-en">Deep Fried Corn Cake</div></div>
+      <div class="dish"><div class="d-th">หมูทอดใบมะกรูดกรอบ</div><div class="d-en">Pork Belly Slice Garnish with Crispy Citrus Leaves</div></div>
+      <div class="dish"><div class="d-th">หมู หรือไก่สับปั้นก้อนทอดกระเทียม</div><div class="d-en">Deep Fried Minced Pork Ball or Chicken Ball with Coriander's Root, Garlic and Peppers Paste</div></div>
+      <div class="dish"><div class="d-th">น่องปีกไก่ทอดกระเทียม</div><div class="d-en">Deep Fried Drumstick with Coriander's Root, Garlic and Peppers Paste</div></div>
+      <div class="dish"><div class="d-th">ไก่ทอดเกลือ</div><div class="d-en">Deep Fried Chicken with Salt</div></div>
+      <div class="dish"><div class="d-th">ไก่ห่อใบเตย</div><div class="d-en">Deep Fried Chicken in Pandan Leaves</div></div>
+      <div class="dish"><div class="d-th">ฟิเล่ปลาทอดราดสามรส</div><div class="d-en">Deep Fried Filet Fish with Sweet and Sour Tamarind Flavor Sauce</div></div>
+      <div class="dish"><div class="d-th">ฟิเล่ปลาทอดราดซอสเปรี้ยวหวาน</div><div class="d-en">Deep Fried Filet Fish with Sweet and Sour Sauce</div></div>
+      <div class="dish"><div class="d-th">ฟิเล่ปลาทอดผัดพริกไทยดำ</div><div class="d-en">Deep Fried Filet Fish with Black Pepper and Garlic Sauce</div></div>
+      <div class="dish"><div class="d-th">ปลานึ่งซีอิ๊ว</div><div class="d-en">Steamed Fish with Soy Sauce</div></div>
+      <div class="dish"><div class="d-th">ปลานึ่งมะนาว</div><div class="d-en">Steamed Fish with Lemon and Garlic Sauce</div></div>
+      <div class="dish"><div class="d-th">ห่อหมกทะเล</div><div class="d-en">Steamed Red Curry in Coconut Milk Custard with Seafoods</div></div>
+      <div class="dish"><div class="d-th">ห่อหมกปลาช่อนใบยอ พริกแกงใต้</div><div class="d-en">Steamed Red Curry in Coconut Milk Custard with River Black Salmon Fish</div></div>
+      <div class="dish"><div class="d-th">หมูอบ หรือไก่อบพะโล้</div><div class="d-en">Baked Pork or Chicken in Chinese Herbal Sweet Sauce</div></div>
+      <div class="dish"><div class="d-th">น่องปีกไก่ทอดเหล้าแดง</div><div class="d-en">Deep Fried Chicken with Red Wine Sauce</div></div>
+      <div class="dish"><div class="d-th">ไก่อบซอส ยอดผัก</div><div class="d-en">Roasted Chicken and Vegetables with Red Gravy Sauce</div></div>
+      <div class="dish"><div class="d-th">ซี่โครงหมูอ่อนอบซอส ยอดผัก</div><div class="d-en">Roasted Pork Ribs and Vegetables with Red Gravy Sauce</div></div>
+      <div class="dish"><div class="d-th">ขาหมูน้ำแดง ยอดผัก</div><div class="d-en">Steamed Pork Leg with Vegetable in Chinese Wine Brown Sauce</div></div>
+      <div class="dish"><div class="d-th">เต้าหู้ทรงเครื่อง น้ำแดง เห็ดหอม</div><div class="d-en">Stir-Fried Tofu, Shiitake Mushrooms and Vegetables in Chinese Wine Brown Sauce</div></div>
+      <div class="dish"><div class="d-th">ไข่ยัดไส้หมูผัดผงกะหรี่</div><div class="d-en">Egg Stuffed Minced Pork with Curry Powder Seasoning Cream Sauce</div></div>
+    </div>
+  </div>
+
+  <div class="cat-card" id="desserts">
+    <div class="cat-head"><h3>DESSERTS</h3><div class="th">ประเภทของหวาน</div></div>
+    <div class="cat-body">
+      <div class="dish"><div class="d-th">ผลไม้รวม</div><div class="d-en">Mixed Fruits</div></div>
+      <div class="dish"><div class="d-th">ทับทิมกรอบ</div><div class="d-en">Water Chestnut Dumplings in Coconut Milk Syrup</div></div>
+      <div class="dish"><div class="d-th">บัวลอยเผือก มะพร้าวอ่อน</div><div class="d-en">Taro Dumpling and Young Coconut in Sweet Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">ลอดช่อง แตงไทหรือเผือก น้ำกะทิ</div><div class="d-en">Lod Chong and Thai Melon or Taro in Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">ขนมรวมมิตร น้ำกะทิ</div><div class="d-en">Water Chestnut Dumplings, Cendol and Jackfruit in Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">สาคูใบเตยมะพร้าวอ่อน</div><div class="d-en">Thai Pandan Sago and Young Coconut in Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">เฉาก๊วย ลูกชิด มันเชื่อม</div><div class="d-en">Grass Jelly, Palm Seeds and Sweeten Potatoes in Syrup and Ice</div></div>
+      <div class="dish"><div class="d-th">ฟักทองแกงบวด</div><div class="d-en">Pumpkin in Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">กล้วยบวชชี</div><div class="d-en">Banana in Coconut Milk</div></div>
+      <div class="dish"><div class="d-th">กล้วยไข่เชื่อม</div><div class="d-en">Egg Banana in Syrup</div></div>
+      <div class="dish"><div class="d-th">รวมมิตรน้ำลำไย</div><div class="d-en">Cold Assorted Bean in Longan Syrup</div></div>
+      <div class="dish"><div class="d-th">วุ้นกะทิใบเตย หรือวุ้นกะทิมะพร้าวอ่อน</div><div class="d-en">Coconut Jelly Pandan Flavor or Young Coconut Jelly</div></div>
+      <div class="dish"><div class="d-th">วุ้นน้ำหวาน</div><div class="d-en">Syrup Jelly</div></div>
+    </div>
+  </div>
+
+  <div class="flourish">❦</div>
+</section>
+
+<!-- ═══ CONTACT / CTA ═══ -->
+<div class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="gold-rule"></div>
+    <h2>CANNES &amp; CO</h2>
+    <p>
+      Cafe · Bakery · Restaurant · Live Music · Catering<br>
+      ซอยมิตรภาพ 19 (ข้างปั๊ม ปตท.) ขอนแก่น · Soi Mittraphap 19, Khon Kaen<br>
+      Open Daily 10:00 – 00:00<br>
+      สอบถาม / จองงานจัดเลี้ยง ทัก LINE หรือ Facebook ได้เลย
+    </p>
+    <div class="cta-btns">
+      <a class="cta-btn gold" href="https://line.me/ti/p/~cannesandco" target="_blank">LINE — จองงานเลี้ยง</a>
+      <a class="cta-btn ghost" href="https://www.facebook.com/cannesandcokkc" target="_blank">Facebook</a>
+      <a class="cta-btn ghost" href="https://www.instagram.com/cannesandco.kkc/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <div class="f-logo">CANNES</div>
+  <p>Cannes &amp; Co — Cafe · Bakery · Restaurant<br>Soi Mittraphap 19, Khon Kaen · Open Daily 10:00 - 00:00<br>ราคานี้ยังไม่รวมภาษีมูลค่าเพิ่ม 7%</p>
+  <div class="socials">
+    <a href="https://www.facebook.com/cannesandcokkc" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/cannesandco.kkc/" target="_blank">Instagram</a>
+    <a href="https://line.me/ti/p/~cannesandco" target="_blank">LINE</a>
+  </div>
+</div>
+
+<script>
+function scrollTo_(sel) {
+  const el = document.querySelector(sel);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+}
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY, nav = document.getElementById('nav');
+  if (y > 300) nav.classList.toggle('hidden', y > lastY && y - lastY > 5);
+  else nav.classList.remove('hidden');
+  lastY = y;
+}, { passive:true });
+const secs = ['pricing','sets','alacarte','desserts','contact'];
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav-pill').forEach(p =>
+        p.classList.toggle('active', p.getAttribute('onclick')?.includes(e.target.id)));
+    }
+  });
+}, { rootMargin:'-30% 0px -60% 0px' });
+secs.forEach(s => { const el = document.getElementById(s); if (el) obs.observe(el); });
+</script>
+</body>
+</html>
